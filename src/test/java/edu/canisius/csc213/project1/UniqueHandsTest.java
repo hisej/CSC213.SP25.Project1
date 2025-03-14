@@ -1,4 +1,3 @@
-
 package edu.canisius.csc213.project1;
 
 
@@ -10,11 +9,11 @@ public class UniqueHandsTest {
 
     @Test
     public void testCalculateTotalUniqueHands() {
-            assertEquals(134596, UniqueHands.calculateTotalUniqueHands(24, 6)); // Expected C(24,6)
-            assertEquals(376740, UniqueHands.calculateTotalUniqueHands(28, 6)); // C(28,6)
-            assertEquals(906192, UniqueHands.calculateTotalUniqueHands(32, 6)); // C(32,6)
-            assertEquals(346104, UniqueHands.calculateTotalUniqueHands(24, 7)); // C(24,7)
-        }    
+        assertEquals(134596, UniqueHands.calculateTotalUniqueHands(24, 6)); // Expected C(24,6)
+        assertEquals(376740, UniqueHands.calculateTotalUniqueHands(28, 6)); // C(28,6)
+        assertEquals(906192, UniqueHands.calculateTotalUniqueHands(32, 6)); // C(32,6)
+        assertEquals(346104, UniqueHands.calculateTotalUniqueHands(24, 7)); // C(24,7)
+    }
 
     @Test
     public void testCountAttemptsToSeeAllHandsIncreasesWithDeckSize() {

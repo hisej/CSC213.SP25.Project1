@@ -26,18 +26,14 @@ public class Deck {
 
         this.cards = new ArrayList<>();
 
-        int numRanksToAdd = 0;
-
-        for (int i = 0; i < size / 4; i++) {
-            numRanksToAdd = i + 1;
+        int numRanksToAdd = size / 4;
 
         for (Card.Suit suit : Card.Suit.values()) {
-                for (int j = 0; j < numRanksToAdd; j++) {
-                    cards.add(new Card(suit, Card.Rank.values()[j]));
+                for (int i = 0; i < numRanksToAdd; i++) {
+                    cards.add(new Card(suit, Card.Rank.values()[i]));
                 }
             }
         }
-    }
 
     /**
      * Shuffles the deck.
@@ -48,7 +44,7 @@ public class Deck {
 
     /**
      * Draws the top card from the deck.
-     * 
+     *
      * @return The drawn card.
      * @throws NoSuchElementException if the deck is empty.
      */
@@ -56,7 +52,8 @@ public class Deck {
         if (cards.isEmpty()) {
             throw new NoSuchElementException("No cards left in the deck.");
         }
-        return cards.remove(cards.size() - 1);
+        //return cards.remove(cards.size() - 1);
+        return cards.remove(0);
     }
 
     /**
@@ -67,4 +64,6 @@ public class Deck {
     public int size() {
         return cards.size();
     }
+
 }
+
