@@ -1,7 +1,5 @@
 package edu.canisius.csc213.project1;
 
-import edu.canisius.csc213.project1.*;
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
