@@ -52,7 +52,6 @@ public class Deck {
         if (cards.isEmpty()) {
             throw new NoSuchElementException("No cards left in the deck.");
         }
-        //return cards.remove(cards.size() - 1);
         return cards.remove(0);
     }
 
