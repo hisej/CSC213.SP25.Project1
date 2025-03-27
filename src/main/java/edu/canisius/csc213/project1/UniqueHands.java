@@ -82,11 +82,11 @@ public class UniqueHands {
         if (totalUniqueHands == -1) return -1;
 
         int attempts = 0;
-        Random random = new Random();
+        Random rand = new Random();
         final int progressInterval = 100000; // Every 100,000 attempts, progress executed
 
         while (seenHashes.size() < totalUniqueHands) {
-            int handHash = generateHandHash(deckSize, handSize, random);
+            int handHash = generateHandHash(deckSize, handSize, rand);
             seenHashes.add(handHash);
             attempts++;
 
@@ -132,17 +132,17 @@ public class UniqueHands {
      * @param handSize number of cards in hand
      * @return integer hash, representing random hand
      */
-    private static int generateHandHash(int deckSize, int handSize, Random random) {
+    private static int generateHandHash(int deckSize, int handSize, Random rand) {
         int[] hand = new int[handSize];
         Set<Integer> uniqueCards = new HashSet<>();
 
         while (uniqueCards.size() < handSize) {
-            uniqueCards.add(random.nextInt(deckSize));
+            uniqueCards.add(rand.nextInt(deckSize));
         }
 
-        int index = 0;
+        int i = 0;
         for (int card : uniqueCards) {
-            hand[index++] = card;
+            hand[i++] = card;
         }
 
         Arrays.sort(hand);
@@ -150,20 +150,20 @@ public class UniqueHands {
     }
 
     /**
-     * Computes combinations
+     * Computes combinations using formula, C(n, r) == C(n, n-r)
      * @param n Total elements.
      * @param r Chosen elements.
      * @return nCr as a double.
      */
     private static double combination(int n, int r) {
-        if (r > n - r) r = n - r; // C(n, r) == C(n, n-r)
-        double result = 1;
+        if (r > n - r) r = n - r;
+        double combination = 1;
 
         for (int i = 0; i < r; i++) {
-            result *= (n - i);
-            result /= (i + 1);
+            combination *= (n - i);
+            combination /= (i + 1);
         }
 
-        return result;
+        return combination;
     }
 }
