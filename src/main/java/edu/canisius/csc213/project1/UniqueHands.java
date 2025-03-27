@@ -41,7 +41,9 @@ public class UniqueHands {
                         int attempts = countAttemptsToSeeAllHands(deckSize, handSize, startTime);
                         long endTime = System.nanoTime();
                         long trialTime = endTime - startTime;
-                        double trialTimeSec = trialTime / 1_000_000_000.0; // Converts to seconds
+
+                        // Convert to seconds
+                        double trialTimeSec = trialTime / 1_000_000_000.0;
 
                         // Writes results to CSV file
                         writer.write(String.format("%d,%d,%d,%d,%.3f%n",
@@ -83,7 +85,7 @@ public class UniqueHands {
 
         int attempts = 0;
         Random rand = new Random();
-        final int progressInterval = 100000; // Every 100,000 attempts, progress executed
+        final int progressInt = 100000; // Every 100,000 attempts, progress executed
 
         while (seenHashes.size() < totalUniqueHands) {
             int handHash = generateHandHash(deckSize, handSize, rand);
@@ -91,7 +93,7 @@ public class UniqueHands {
             attempts++;
 
             // Every 100,000 attempts, report Progress
-            if (attempts % progressInterval == 0) {
+            if (attempts % progressInt == 0) {
                 int uniqueSeen = seenHashes.size();
                 int remaining = totalUniqueHands - uniqueSeen;
                 double progress = (uniqueSeen / (double) totalUniqueHands) * 100;
@@ -111,7 +113,9 @@ public class UniqueHands {
 
         long endTime = System.nanoTime();
         long trialTime = endTime - startTime;
-        double trialTimeSec = trialTime / 1_000_000_000.0; // Converts to sec.
+
+        // Convert to seconds
+        double trialTimeSec = trialTime / 1_000_000_000.0;
 
         // Final log for 100% coverage
         if (seenHashes.size() == totalUniqueHands) {
